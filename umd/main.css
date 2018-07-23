@@ -182,47 +182,45 @@
   font-size: 12px;
   font-weight: 500;
 }.sc-header {
-  background: #4e8cff;
-  min-height: 75px;
+  background: url(chatbg.13bfdf85.png);
+  background-position: center;
+  background-size: cover;
+  min-height: 145px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
   color: white;
-  padding: 10px;
+  padding: 10px 25px;
   -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2);
           box-shadow: 0 1px 4px rgba(0,0,0,.2);
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .sc-header--img {
-  border-radius: 50%;
   -ms-flex-item-align: center;
       align-self: center;
-  padding: 10px;
+  padding: 5px 10px 0;
 }
 
 .sc-header--team-name {
-  -ms-flex-item-align: center;
-      align-self: center;
-  padding: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  cursor: pointer;
-  border-radius: 5px;
+  padding: 0px 10px 0px;
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  color: #263238;
+  font-weight: bold;
+}
+.sc-header--sub-name {
+  padding: 5px 10px;
+  color: #263238;
+  display: block;
+  width: 100%;
 }
 
-.sc-header--team-name:hover {
+/* .sc-header--team-name:hover {
   background: #4882ed;
-}
+} */
 
 .sc-header--close-button {
   width: 40px;
@@ -279,7 +277,6 @@
 }
 
 .sc-message--avatar {
-  background-image: url(https://d13yacurqjgara.cloudfront.net/assets/avatar-default-aa2eab7684294781f93bc99ad394a0eb3249c5768c21390163c9f55ea8ef83a4.gif);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;

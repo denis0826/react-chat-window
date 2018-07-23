@@ -1,34 +1,40 @@
 .sc-header {
-  background: #4e8cff;
-  min-height: 75px;
+  background: url(../assets/chatbg.png);
+  background-position: center;
+  background-size: cover;
+  min-height: 145px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
   color: white;
-  padding: 10px;
+  padding: 10px 25px;
   box-shadow: 0 1px 4px rgba(0,0,0,.2);
   position: relative;
   box-sizing: border-box;
-  display: flex;
 }
 
 .sc-header--img {
-  border-radius: 50%;
   align-self: center;
-  padding: 10px;
+  padding: 5px 10px 0;
 }
 
 .sc-header--team-name {
-  align-self: center;
-  padding: 10px;
-  flex: 1;
-  user-select: none;
-  cursor: pointer;
-  border-radius: 5px;
+  padding: 0px 10px 0px;
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  color: #263238;
+  font-weight: bold;
+}
+.sc-header--sub-name {
+  padding: 5px 10px;
+  color: #263238;
+  display: block;
+  width: 100%;
 }
 
-.sc-header--team-name:hover {
+/* .sc-header--team-name:hover {
   background: #4882ed;
-}
+} */
 
 .sc-header--close-button {
   width: 40px;

@@ -35,6 +35,7 @@ var ChatWindow = function (_Component) {
       { className: classList.join(' ') },
       React.createElement(Header, {
         teamName: this.props.agentProfile.teamName,
+        subName: this.props.agentProfile.subName,
         imageUrl: this.props.agentProfile.imageUrl,
         onClose: this.props.onClose
       }),

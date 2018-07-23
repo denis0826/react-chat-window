@@ -47,6 +47,10 @@ const messageBroker = {
     return 1;
   },
 
+  getSubName() {
+    return 1;
+  },
+
   getImageUrl() {
     return 1;
   },

@@ -30,8 +30,10 @@ var Header = function (_Component) {
       ),
       React.createElement(
         'div',
-        { className: 'sc-header--close-button', onClick: this.props.onClose },
-        React.createElement('img', { src: closeIcon, alt: '' })
+        { className: 'sc-header--sub-name' },
+        ' ',
+        this.props.subName,
+        ' '
       )
     );
   };

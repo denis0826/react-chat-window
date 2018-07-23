@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TextMessage from './TextMessage'
-import chatIconUrl from './../../assets/chat-icon.svg'
+import chatIconUrl from './../../assets/dario-small.png'
 
 
 class Message extends Component {

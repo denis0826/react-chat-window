@@ -6,6 +6,7 @@ import TestArea from './TestArea';
 import Header from './Header';
 import Footer from './Footer';
 import monsterImgUrl from "./../assets/monster.png";
+import darioLogo from '../../src/assets/dario-small.png';
 import Highlight from "react-highlight.js";
 import './../assets/styles'
 
@@ -58,7 +59,8 @@ class Demo extends Component {
       <Launcher
         agentProfile={{
           teamName: 'Dario Bot',
-          imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
+          subName: 'We help your business grow by connecting you to your customers.',
+          imageUrl: darioLogo
         }}
         onMessageWasSent={this._onMessageWasSent.bind(this)}
         messageList={this.state.messageList}

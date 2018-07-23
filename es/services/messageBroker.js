@@ -42,6 +42,9 @@ var messageBroker = {
   getTeamName: function getTeamName() {
     return 1;
   },
+  getSubName: function getSubName() {
+    return 1;
+  },
   getImageUrl: function getImageUrl() {
     return 1;
   },

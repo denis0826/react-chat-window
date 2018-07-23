@@ -6,7 +6,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import React, { Component } from 'react';
 import TextMessage from './TextMessage';
-import chatIconUrl from './../../assets/chat-icon.svg';
+import chatIconUrl from './../../assets/dario-small.png';
 
 var Message = function (_Component) {
   _inherits(Message, _Component);
