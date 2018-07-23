@@ -35,14 +35,10 @@ class ChatWindow extends Component {
             messages={messageList}
             imageUrl={this.props.agentProfile.imageUrl}
           />
-          <UserInput showEmoji={this.props.showEmoji} onSubmit={this.onUserInputSubmit.bind(this)}/>
+          <UserInput onSubmit={this.onUserInputSubmit.bind(this)}/>
         </div>
       );
     }
-}
-
-ChatWindow.propTypes = {
-  showEmoji: PropTypes.bool
 }
 
 export default ChatWindow;

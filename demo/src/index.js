@@ -57,7 +57,7 @@ class Demo extends Component {
       />
       <Launcher
         agentProfile={{
-          teamName: 'react-live-chat',
+          teamName: 'Dario Bot',
           imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
         }}
         onMessageWasSent={this._onMessageWasSent.bind(this)}
@@ -65,7 +65,6 @@ class Demo extends Component {
         newMessagesCount={this.state.newMessagesCount}
         handleClick={this._handleClick.bind(this)}
         isOpen={this.state.isOpen}
-        showEmoji
       />
       <img className="demo-monster-img" src={monsterImgUrl} />
       <Footer />

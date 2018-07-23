@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import SendIcon from './icons/SendIcon';
-import EmojiIcon from './icons/EmojiIcon';
-import EmojiPicker from './emoji-picker/EmojiPicker';
 
 
 class UserInput extends Component {
@@ -33,14 +31,6 @@ class UserInput extends Component {
     }
   }
 
-  _handleEmojiPicked(emoji) {
-    this.props.onSubmit({
-      author: 'me',
-      type: 'emoji',
-      data: { emoji }
-    });
-  }
-
   render() {
     return (
       <form className={`sc-user-input ${(this.state.inputActive ? 'active' : '')}`}>
@@ -58,9 +48,7 @@ class UserInput extends Component {
         </div>
         <div className="sc-user-input--buttons">
           <div className="sc-user-input--button"></div>
-          <div className="sc-user-input--button">
-            {this.props.showEmoji && <EmojiIcon onEmojiPicked={this._handleEmojiPicked.bind(this)} />}
-          </div>
+          <div className="sc-user-input--button"></div>
           <div className="sc-user-input--button">
             <SendIcon onClick={this._submitText.bind(this)} />
           </div>
@@ -71,8 +59,7 @@ class UserInput extends Component {
 }
 
 UserInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  showEmoji: PropTypes.bool
+  onSubmit: PropTypes.func.isRequired
 };
 
 export default UserInput;
