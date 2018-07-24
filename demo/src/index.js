@@ -58,8 +58,8 @@ class Demo extends Component {
       />
       <Launcher
         agentProfile={{
-          teamName: 'Dario Bot',
-          subName: 'We help your business grow by connecting you to your customers.',
+          teamName: 'Dario',
+          subName: 'WCP Support Bot',
           imageUrl: darioLogo
         }}
         onMessageWasSent={this._onMessageWasSent.bind(this)}

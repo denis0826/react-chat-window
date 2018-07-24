@@ -667,6 +667,10 @@ var Message = function (_Component) {
     return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
+  Message.prototype.componentDidUpdate = function componentDidUpdate() {
+    console.log('update component');
+  };
+
   Message.prototype._renderMessageOfType = function _renderMessageOfType(type) {
     switch (type) {
       case 'text':

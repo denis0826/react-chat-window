@@ -4,7 +4,9 @@ import chatIconUrl from './../../assets/dario-small.png'
 
 
 class Message extends Component {
-
+  componentDidUpdate() {
+    console.log('update component');
+  }
   _renderMessageOfType(type) {
     switch(type) {
       case 'text':
