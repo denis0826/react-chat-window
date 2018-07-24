@@ -17,10 +17,6 @@ var Message = function (_Component) {
     return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  Message.prototype.componentDidUpdate = function componentDidUpdate() {
-    console.log('update component');
-  };
-
   Message.prototype._renderMessageOfType = function _renderMessageOfType(type) {
     switch (type) {
       case 'text':
@@ -36,6 +32,13 @@ var Message = function (_Component) {
       React.createElement(
         'div',
         { className: contentClassList.join(" ") },
+        React.createElement(
+          'div',
+          { className: 'loader' },
+          React.createElement('span', null),
+          React.createElement('span', null),
+          React.createElement('span', null)
+        ),
         React.createElement('div', { className: 'sc-message--avatar', style: {
             backgroundImage: 'url(' + chatIconUrl + ')'
           } }),

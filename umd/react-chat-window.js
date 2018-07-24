@@ -667,10 +667,6 @@ var Message = function (_Component) {
     return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  Message.prototype.componentDidUpdate = function componentDidUpdate() {
-    console.log('update component');
-  };
-
   Message.prototype._renderMessageOfType = function _renderMessageOfType(type) {
     switch (type) {
       case 'text':
@@ -686,6 +682,13 @@ var Message = function (_Component) {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: contentClassList.join(" ") },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'loader' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null)
+        ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'sc-message--avatar', style: {
             backgroundImage: 'url(' + __WEBPACK_IMPORTED_MODULE_2__assets_dario_small_png___default.a + ')'
           } }),

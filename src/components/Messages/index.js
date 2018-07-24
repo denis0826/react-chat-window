@@ -4,16 +4,13 @@ import chatIconUrl from './../../assets/dario-small.png'
 
 
 class Message extends Component {
-  componentDidUpdate() {
-    console.log('update component');
-  }
+
   _renderMessageOfType(type) {
     switch(type) {
       case 'text':
         return <TextMessage {...this.props.message} />
     }
   }
-
   render () {
     let contentClassList = [
       "sc-message--content",
@@ -22,6 +19,11 @@ class Message extends Component {
     return (
       <div className="sc-message">
         <div className={contentClassList.join(" ")}>
+          <div className="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <div className="sc-message--avatar" style={{
             backgroundImage: `url(${chatIconUrl})`
           }}></div>
