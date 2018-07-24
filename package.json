@@ -23,6 +23,7 @@
     "gh-pages": "^1.0.0",
     "prop-types": "15.5.10",
     "react-highlight.js": "1.0.5",
+    "react-transition-group": "^2.4.0",
     "socket.io-client": "2.0.3"
   },
   "peerDependencies": {

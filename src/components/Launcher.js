@@ -10,7 +10,8 @@ class Launcher extends Component {
     super();
     this.state = {
       launcherIcon,
-      isOpen: false
+      isOpen: false,
+      checkLatest:false
     };
   }
 
@@ -44,6 +45,7 @@ class Launcher extends Component {
           onUserInputSubmit={this.props.onMessageWasSent}
           agentProfile={this.props.agentProfile}
           isOpen={isOpen}
+          checkLatest={this.props.checkLatest}
           onClose={this.handleClick.bind(this)}
         />
       </div>
@@ -65,6 +67,7 @@ Launcher.propTypes = {
   onMessageWasSent: PropTypes.func,
   newMessagesCount: PropTypes.number,
   isOpen: PropTypes.bool,
+  checkLatest:PropTypes.bool,
   handleClick: PropTypes.func,
   messageList: PropTypes.arrayOf(PropTypes.object)
 };

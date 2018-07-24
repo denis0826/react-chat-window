@@ -20,7 +20,8 @@ var Launcher = function (_Component) {
 
     _this.state = {
       launcherIcon: launcherIcon,
-      isOpen: false
+      isOpen: false,
+      checkLatest: false
     };
     return _this;
   }
@@ -54,6 +55,7 @@ var Launcher = function (_Component) {
         onUserInputSubmit: this.props.onMessageWasSent,
         agentProfile: this.props.agentProfile,
         isOpen: isOpen,
+        checkLatest: this.props.checkLatest,
         onClose: this.handleClick.bind(this)
       })
     );
@@ -78,6 +80,7 @@ Launcher.propTypes = process.env.NODE_ENV !== "production" ? {
   onMessageWasSent: PropTypes.func,
   newMessagesCount: PropTypes.number,
   isOpen: PropTypes.bool,
+  checkLatest: PropTypes.bool,
   handleClick: PropTypes.func,
   messageList: PropTypes.arrayOf(PropTypes.object)
 } : {};

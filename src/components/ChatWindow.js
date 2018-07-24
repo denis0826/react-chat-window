@@ -34,6 +34,7 @@ class ChatWindow extends Component {
           <MessageList
             messages={messageList}
             imageUrl={this.props.agentProfile.imageUrl}
+            isLatest={this.props.checkLatest}
           />
           <UserInput onSubmit={this.onUserInputSubmit.bind(this)}/>
         </div>

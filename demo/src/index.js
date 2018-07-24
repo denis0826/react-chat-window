@@ -22,7 +22,6 @@ class Demo extends Component {
       isOpen: false
     };
   }
-
   _onMessageWasSent(message) {
     this.setState({
       messageList: [...this.state.messageList, message]
@@ -37,7 +36,8 @@ class Demo extends Component {
         messageList: [...this.state.messageList, {
           author: 'them',
           type: 'text',
-          data: { text }
+          data: { text },
+          isLatest: true
         }]
       })
     }
@@ -67,6 +67,7 @@ class Demo extends Component {
         newMessagesCount={this.state.newMessagesCount}
         handleClick={this._handleClick.bind(this)}
         isOpen={this.state.isOpen}
+        checkLatest={this.state.messageList[this.state.messageList.length - 1].isLatest}
       />
       <img className="demo-monster-img" src={monsterImgUrl} />
       <Footer />

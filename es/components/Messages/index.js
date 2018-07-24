@@ -8,14 +8,33 @@ import React, { Component } from 'react';
 import TextMessage from './TextMessage';
 import chatIconUrl from './../../assets/dario-small.png';
 
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 var Message = function (_Component) {
   _inherits(Message, _Component);
 
   function Message() {
     _classCallCheck(this, Message);
 
-    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, _Component.call(this));
+
+    _this.state = {
+      showType: true,
+      showMessage: true
+    };
+    return _this;
   }
+
+  Message.prototype.componentDidMount = function componentDidMount() {
+    var _this2 = this;
+
+    if (this.props.message.isLatest) {
+      this.setState({ showMessage: false });
+      setTimeout(function () {
+        _this2.setState({ showType: false });
+      }, 1700);
+    }
+  };
 
   Message.prototype._renderMessageOfType = function _renderMessageOfType(type) {
     switch (type) {
@@ -25,24 +44,45 @@ var Message = function (_Component) {
   };
 
   Message.prototype.render = function render() {
+    var _this3 = this;
+
     var contentClassList = ["sc-message--content", this.props.message.author === "me" ? "sent" : "received"];
+    var scLoader = React.createElement(
+      CSSTransition,
+      {
+        'in': this.state.showType,
+        timeout: 200,
+        unmountOnExit: true,
+        classNames: {
+          appear: 'my-appear',
+          enter: 'my-enter',
+          exit: 'my-exit'
+        },
+        onExited: function onExited() {
+          _this3.setState({
+            showMessage: true
+          });
+        }
+      },
+      React.createElement(
+        'div',
+        { className: 'loader' },
+        React.createElement('span', null),
+        React.createElement('span', null),
+        React.createElement('span', null)
+      )
+    );
     return React.createElement(
       'div',
       { className: 'sc-message' },
       React.createElement(
         'div',
         { className: contentClassList.join(" ") },
-        React.createElement(
-          'div',
-          { className: 'loader' },
-          React.createElement('span', null),
-          React.createElement('span', null),
-          React.createElement('span', null)
-        ),
         React.createElement('div', { className: 'sc-message--avatar', style: {
             backgroundImage: 'url(' + chatIconUrl + ')'
           } }),
-        this._renderMessageOfType(this.props.message.type)
+        this.props.message.isLatest && scLoader,
+        this.state.showMessage && this._renderMessageOfType(this.props.message.type)
       )
     );
   };

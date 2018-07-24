@@ -41,7 +41,8 @@ var ChatWindow = function (_Component) {
       }),
       React.createElement(MessageList, {
         messages: messageList,
-        imageUrl: this.props.agentProfile.imageUrl
+        imageUrl: this.props.agentProfile.imageUrl,
+        isLatest: this.props.checkLatest
       }),
       React.createElement(UserInput, { onSubmit: this.onUserInputSubmit.bind(this) })
     );
