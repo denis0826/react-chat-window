@@ -44,7 +44,6 @@ class Message extends Component {
   }
   render () {
     const { messageState, showType, showMessage } = this.state;
-    console.log(messageState.ctr)
     let contentClassList = [
       "sc-message--content",
       (messageState.author === "me" ? "sent" : "received")

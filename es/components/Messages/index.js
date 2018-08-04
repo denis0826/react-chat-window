@@ -67,7 +67,6 @@ var Message = function (_Component) {
         showType = _state.showType,
         showMessage = _state.showMessage;
 
-    console.log(messageState.ctr);
     var contentClassList = ["sc-message--content", messageState.author === "me" ? "sent" : "received"];
     var scLoader = React.createElement(
       CSSTransition,

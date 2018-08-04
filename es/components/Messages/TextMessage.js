@@ -17,7 +17,6 @@ var TextMessage = function (_Component) {
   }
 
   TextMessage.prototype.render = function render() {
-    console.log(this.props);
     return React.createElement(
       'div',
       { className: 'sc-message--text' },
