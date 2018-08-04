@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import {Launcher} from '../../src'
+import uuidv4 from 'uuid/v4'
+
 import messageHistory from './messageHistory';
 import TestArea from './TestArea';
 import Header from './Header';
 import Footer from './Footer';
 import monsterImgUrl from "./../assets/monster.png";
 import darioLogo from '../../src/assets/dario-small.png';
-import Highlight from "react-highlight.js";
 import './../assets/styles'
 
 
@@ -19,30 +20,35 @@ class Demo extends Component {
     this.state = {
       messageList: messageHistory,
       newMessagesCount: 0,
-      isOpen: false
+      isOpen: false,
+      ctr:0,
     };
   }
   _onMessageWasSent(message) {
     this.setState({
-      messageList: [...this.state.messageList, message]
+      messageList: [...this.state.messageList, message],
+      ctr: 0
     })
   }
-
   _sendMessage(text) {
     if (text.length > 0) {
       const newMessagesCount = this.state.isOpen ? this.state.newMessagesCount : this.state.newMessagesCount + 1
-      this.setState({
-        newMessagesCount: newMessagesCount,
-        messageList: [...this.state.messageList, {
-          author: 'them',
-          type: 'text',
-          data: { text },
-          isLatest: true
-        }]
+      this.setState((prevState, props) => {
+        return {
+          newMessagesCount: newMessagesCount,
+          messageList: [...this.state.messageList, {
+            type: 'text',
+            author: 'them',
+            data: { text },
+            isLatest: false,
+            ctr: this.state.ctr || 0,
+            uuid: uuidv4()
+          }],
+          ctr: prevState.ctr + 1
+        }
       })
     }
   }
-
   _handleClick() {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -58,8 +64,8 @@ class Demo extends Component {
       />
       <Launcher
         agentProfile={{
-          teamName: 'Dario',
-          subName: 'WCP Support Bot',
+          teamName: 'Header ',
+          subName: 'Subtittle',
           imageUrl: darioLogo
         }}
         onMessageWasSent={this._onMessageWasSent.bind(this)}
@@ -67,7 +73,6 @@ class Demo extends Component {
         newMessagesCount={this.state.newMessagesCount}
         handleClick={this._handleClick.bind(this)}
         isOpen={this.state.isOpen}
-        checkLatest={this.state.messageList[this.state.messageList.length - 1].isLatest}
       />
       <img className="demo-monster-img" src={monsterImgUrl} />
       <Footer />

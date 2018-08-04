@@ -21,18 +21,21 @@
   },
   "dependencies": {
     "gh-pages": "^1.0.0",
-    "prop-types": "15.5.10",
-    "react-highlight.js": "1.0.5",
+    "immutability-helper": "^2.7.1",
+    "jquery": "^3.3.1",
+    "prop-types": "15.6.2",
+    "react-highlight.js": "1.0.7",
     "react-transition-group": "^2.4.0",
-    "socket.io-client": "2.0.3"
+    "socket.io-client": "2.0.3",
+    "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "react": "15.x"
+    "react": "16.x"
   },
   "devDependencies": {
     "nwb": "0.17.x",
-    "react": "15.6.1",
-    "react-dom": "15.6.1"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   },
   "author": "",
   "homepage": "",

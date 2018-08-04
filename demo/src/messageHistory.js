@@ -13,7 +13,7 @@ export default [
   {type: 'text', author: "them", data: { text: "Just talking? Well what's the show about?"} },
   {type: 'text', author: "me", data: { text: "It's about nothing."} },
   {type: 'text', author: "them", data: { text: "No story?"} },
-  {type: 'text', author: "me", data: { text: "No forget the story. "} },
-  {type: 'text', author: "them", data: { text: "You've got to have a story."} },
-  {type: 'emoji', author: "me", data: { emoji: "😋"} },
+  {type: 'text', author: "me", data: { text: "No forget the story. "}},
+  {type: 'text', author: "them", data: { text: "No story?"} },
+  // {type: 'text', author: "them", data: { text: "No story?"}, isLatest : true },
 ]

@@ -1,27 +1,41 @@
 import React, { Component } from 'react'
 import TextMessage from './TextMessage'
 import chatIconUrl from './../../assets/dario-small.png'
+import update from 'immutability-helper';
+import $ from 'jquery'
 
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 
 class Message extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       showType: true,
-      showMessage: true
+      showMessage: true,
+      showAvatar: true,
+      messageState: props.message,
     };
   }
   componentDidMount() {
-    if(this.props.message.isLatest){
-      this.setState({showMessage: false});
+    const { messageState } = this.state
+    if(messageState.ctr >= 0){
+      $("div.ctr").prev().addClass('rmv');
+    }
+    if(messageState.isLatest === undefined){
+      this.setState({
+        messageState : update(messageState, {isLatest: {$set: false}})
+      })
+    }else{
+      this.setState({
+        messageState : update(messageState, {isLatest: {$set: true}}),
+        showMessage: false
+      })
       setTimeout( () => {
         this.setState({showType: false});
       }, 1700);
     }
   }
-
   _renderMessageOfType(type) {
     switch(type) {
       case 'text':
@@ -29,20 +43,18 @@ class Message extends Component {
     }
   }
   render () {
+    const { messageState, showType, showMessage } = this.state;
+    console.log(messageState.ctr)
     let contentClassList = [
       "sc-message--content",
-      (this.props.message.author === "me" ? "sent" : "received")
+      (messageState.author === "me" ? "sent" : "received")
     ];
     let scLoader = (
       <CSSTransition
-        in={this.state.showType}
-        timeout={200}
+        in={showType}
+        timeout={300}
         unmountOnExit
-        classNames={{
-          appear: 'my-appear',
-          enter: 'my-enter',
-          exit: 'my-exit',
-        }}
+        classNames="fade"
         onExited={() => {
           this.setState({
             showMessage: true,
@@ -57,16 +69,16 @@ class Message extends Component {
       </CSSTransition>
     );
     return (
-      <div className="sc-message">
+      <div className={`sc-message ${messageState.ctr !== undefined && 'ctr'}`}>
         <div className={contentClassList.join(" ")}>
           <div className="sc-message--avatar" style={{
             backgroundImage: `url(${chatIconUrl})`
           }}></div>
-          {this.props.message.isLatest && scLoader }
-          {/* {this.props.message.isLatest && this.state.showMessage ? scLoader : this._renderMessageOfType(this.props.message.type)} */}
-          {this.state.showMessage && this._renderMessageOfType(this.props.message.type)}
+          { messageState.isLatest && scLoader }
+          { showMessage && this._renderMessageOfType(messageState.type) }
         </div>
-      </div>)
+      </div>
+    )
   }
 }
 
