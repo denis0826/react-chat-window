@@ -6,29 +6,114 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 import React, { Component } from 'react';
 import Message from './Messages';
+import update from 'immutability-helper';
 
 var MessageList = function (_Component) {
   _inherits(MessageList, _Component);
 
-  function MessageList() {
+  function MessageList(props) {
     _classCallCheck(this, MessageList);
 
-    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.state = {
+      list: [].concat(props.messages),
+      list2: []
+    };
+    return _this;
   }
+
+  MessageList.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+
+    // this.props.messages.map((message,i, arr) => {
+    //   let current, prev = 0, next, group = 'na';
+    //   current = message.author;
+    //   if (i > 0) {
+    //     prev = arr[i - 1];
+    //     // prev = i - 1;
+    //     // console.log('prev:', prev)
+    //     // this.setState({
+    //     //   list : update(this.state.list, {prev: {removeAvatar: {$set: true}}})
+    //     // })
+    //     console.log(prev)
+    //   }
+    //   if (i < arr.length - 1) {
+    //     next = arr[i + 1];
+    //   }
+    //   console.log('Current: ', current)
+    //   console.log("Previous: ", prev);
+    //   console.log("Next: ", next);
+    //   if(current === 'them' && prev.author === 'them' ){
+    //     group = 'gm';
+    //     this.setState({
+    //       list : update(this.state.list, {1: {removeAvatar: {$set: true}}}),
+    //     })
+    //   }
+    // })
+
+  };
 
   MessageList.prototype.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
     this.scrollList.scrollTop = this.scrollList.scrollHeight;
+    if (prevProps.messages.length !== this.props.messages.length) {
+      // this.setState({
+      //   list : update(this.state.list, {14: {isLatest: {$set: 'falsdadae'}}})
+      // })
+      this.setState({
+        list: [].concat(this.props.messages)
+      });
+
+      // this.props.messages.map((message, i, arr) => {
+      //   let current, prev, next, group = 'na';
+      //   current = message.author;
+      //   if (i > 0) {
+      //     prev = arr[i - 1].author;
+      //   }
+      //   if (i < arr.length - 1) {
+      //     next = arr[i + 1].author;
+      //   }
+      //   if(current === 'them' && prev === 'them' ){
+      //     group = 'gm';
+      //   }
+      //   if(group === 'gm'){
+      //     this.setState({
+      //       list: update(this.props.messages, {[2, 3]: {removeAvatar: {$set: true}}}),
+      //     })
+      //   }
+      // })
+    }
   };
 
   MessageList.prototype.render = function render() {
     var _this2 = this;
+
+    // console.log(this.state.list)
 
     return React.createElement(
       'div',
       { className: 'sc-message-list', ref: function ref(el) {
           return _this2.scrollList = el;
         } },
-      this.props.messages.map(function (message, i) {
+      this.state.list.map(function (message, i, arr) {
+        // let current, prev, next, group = 'na';
+        // current = message.author;
+        // if (i > 0) {
+        //   prev = arr[i - 1].author;
+        // }
+        // if (i < arr.length - 1) {
+        //   next = arr[i + 1].author;
+        // }
+        // // console.log('Current: ', current)
+        // // console.log("Previous: ", prev);
+        // // console.log("Next: ", next);
+        // if(current === 'them' && prev === 'them' ){
+        //   group = 'gm';
+        // }
+        // if(group === 'gm'){
+        //   this.setState({
+        //     list2 : update(this.state.list, {[i - 2]: {removeAvatar: {$set: true}}}),
+        //   })
+        // }
         return React.createElement(Message, { message: message, key: i });
       })
     );

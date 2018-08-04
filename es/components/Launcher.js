@@ -80,7 +80,7 @@ Launcher.propTypes = process.env.NODE_ENV !== "production" ? {
   onMessageWasSent: PropTypes.func,
   newMessagesCount: PropTypes.number,
   isOpen: PropTypes.bool,
-  checkLatest: PropTypes.bool,
+  checkLatest: PropTypes.func,
   handleClick: PropTypes.func,
   messageList: PropTypes.arrayOf(PropTypes.object)
 } : {};

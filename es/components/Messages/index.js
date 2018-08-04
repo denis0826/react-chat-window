@@ -7,20 +7,24 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 import React, { Component } from 'react';
 import TextMessage from './TextMessage';
 import chatIconUrl from './../../assets/dario-small.png';
+import update from 'immutability-helper';
+import $ from 'jquery';
 
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 var Message = function (_Component) {
   _inherits(Message, _Component);
 
-  function Message() {
+  function Message(props) {
     _classCallCheck(this, Message);
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
     _this.state = {
       showType: true,
-      showMessage: true
+      showMessage: true,
+      showAvatar: true,
+      messageState: props.message
     };
     return _this;
   }
@@ -28,8 +32,20 @@ var Message = function (_Component) {
   Message.prototype.componentDidMount = function componentDidMount() {
     var _this2 = this;
 
-    if (this.props.message.isLatest) {
-      this.setState({ showMessage: false });
+    var messageState = this.state.messageState;
+
+    if (messageState.ctr >= 0) {
+      $("div.ctr").prev().addClass('rmv');
+    }
+    if (messageState.isLatest === undefined) {
+      this.setState({
+        messageState: update(messageState, { isLatest: { $set: false } })
+      });
+    } else {
+      this.setState({
+        messageState: update(messageState, { isLatest: { $set: true } }),
+        showMessage: false
+      });
       setTimeout(function () {
         _this2.setState({ showType: false });
       }, 1700);
@@ -46,18 +62,20 @@ var Message = function (_Component) {
   Message.prototype.render = function render() {
     var _this3 = this;
 
-    var contentClassList = ["sc-message--content", this.props.message.author === "me" ? "sent" : "received"];
+    var _state = this.state,
+        messageState = _state.messageState,
+        showType = _state.showType,
+        showMessage = _state.showMessage;
+
+    console.log(messageState.ctr);
+    var contentClassList = ["sc-message--content", messageState.author === "me" ? "sent" : "received"];
     var scLoader = React.createElement(
       CSSTransition,
       {
-        'in': this.state.showType,
-        timeout: 200,
+        'in': showType,
+        timeout: 300,
         unmountOnExit: true,
-        classNames: {
-          appear: 'my-appear',
-          enter: 'my-enter',
-          exit: 'my-exit'
-        },
+        classNames: 'fade',
         onExited: function onExited() {
           _this3.setState({
             showMessage: true
@@ -74,15 +92,15 @@ var Message = function (_Component) {
     );
     return React.createElement(
       'div',
-      { className: 'sc-message' },
+      { className: 'sc-message ' + (messageState.ctr !== undefined && 'ctr') },
       React.createElement(
         'div',
         { className: contentClassList.join(" ") },
         React.createElement('div', { className: 'sc-message--avatar', style: {
             backgroundImage: 'url(' + chatIconUrl + ')'
           } }),
-        this.props.message.isLatest && scLoader,
-        this.state.showMessage && this._renderMessageOfType(this.props.message.type)
+        messageState.isLatest && scLoader,
+        showMessage && this._renderMessageOfType(messageState.type)
       )
     );
   };

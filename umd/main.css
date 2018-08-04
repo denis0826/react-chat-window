@@ -215,44 +215,9 @@
   transition: opacity 500ms ease-in;
 }
 
-.star {
-  display: inline-block;
-  margin-left: 0.5rem;
-  -webkit-transform: scale(1.25);
-      -ms-transform: scale(1.25);
-          transform: scale(1.25);
-}
-.star-enter {
-  opacity: 0.01;
-  -webkit-transform: translateY(-100%) scale(0.75);
-      -ms-transform: translateY(-100%) scale(0.75);
-          transform: translateY(-100%) scale(0.75);
-}
-.star-enter-active {
-  opacity: 1;
-  -webkit-transform: translateY(0%) scale(1.25);
-      -ms-transform: translateY(0%) scale(1.25);
-          transform: translateY(0%) scale(1.25);
-  -webkit-transition: all 300ms ease-out;
-  -o-transition: all 300ms ease-out;
-  transition: all 300ms ease-out;
-}
-.star-exit {
-  opacity: 1;
-  -webkit-transform: scale(1.25);
-      -ms-transform: scale(1.25);
-          transform: scale(1.25);
-}
-.star-exit-active {
+.rmv .sc-message--avatar {
   opacity: 0;
-  -webkit-transform: scale(4);
-      -ms-transform: scale(4);
-          transform: scale(4);
-  -webkit-transition: all 300ms ease-in;
-  -o-transition: all 300ms ease-in;
-  transition: all 300ms ease-in;
-}
-.sc-launcher {
+}.sc-launcher {
   width: 60px;
   height: 60px;
   background-color: #4e8cff;
@@ -477,7 +442,8 @@
   font-size: 14px;
   line-height: 1.4;
   white-space: pre-wrap;
-  -webkit-font-smoothing: subpixel-antialiased
+  -webkit-font-smoothing: subpixel-antialiased;
+  word-break: break-all;
 }
 
 .sc-message--content.sent .sc-message--text {
@@ -501,7 +467,35 @@
   .sc-message {
     width: 80%;
   }
-}.sc-user-input {
+}
+
+/* .sc-group .sc-message--avatar {
+  opacity: 0;
+} */
+/* .sc-message-list .sc-group:nth-last-of-type() .sc-message--avatar {
+  opacity: 1;
+} */
+.sc-message-list .sc-single.ctr-0 .sc-message--avatar {
+  opacity: 1;
+}
+.sc-message-list .sc-single.ctr-1 .sc-message--avatar {
+  opacity: 1;
+}
+/* .sc-message-list .sc-single.ctr-1.remove1 .sc-message--avatar {
+  opacity: 0;
+} */
+.sc-message-list .sc-group.ctr-1 .sc-message--avatar {
+  opacity: 0;
+}
+.sc-message-list .sc-single.ctr-1:last-child .sc-message--avatar {
+  opacity: 1;
+}
+.sc-message-list .sc-group:last-child .sc-message--avatar {
+  opacity: 1;
+}
+/* .sc-message-list .remove1.false .sc-message--avatar{
+  opacity: 0;
+} */.sc-user-input {
   min-height: 55px;
   margin: 0px;
   position: relative;
@@ -610,6 +604,7 @@
   border: none;
   padding: 0px;
   margin: 0px;
+  outline: none;
 }
 
 .sc-user-input--emoji-icon-wrapper:focus {
